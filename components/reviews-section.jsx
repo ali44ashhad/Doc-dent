@@ -41,7 +41,7 @@ export default function ReviewsSection() {
     <section className="py-24 bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16 animate-fade-in-up gpu-accelerated">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground text-balance">
             Student Testimonials
           </h2>
@@ -51,14 +51,14 @@ export default function ReviewsSection() {
         </div>
 
         {/* Testimonials Slider */}
-        <div className="relative">
-          <div className="relative min-h-80 flex items-center justify-center overflow-hidden rounded-2xl bg-card border border-border p-8 sm:p-12">
+        <div className="relative gpu-accelerated">
+          <div className="relative min-h-80 flex items-center justify-center overflow-hidden rounded-2xl bg-card border border-border p-8 sm:p-12 gpu-accelerated">
             {/* Slides */}
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 p-8 sm:p-12 flex flex-col justify-between transition-opacity duration-1000 ease-in-out ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
+                className={`absolute inset-0 p-8 sm:p-12 flex flex-col justify-between transition-opacity duration-1000 ease-in-out gpu-accelerated ${
+                  index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
                 <div>
@@ -75,11 +75,11 @@ export default function ReviewsSection() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-32 h-32 rounded-full bg-muted overflow-hidden flex-shrink-0">
+                  <div className="w-32 h-32 rounded-full bg-muted overflow-hidden flex-shrink-0 gpu-accelerated">
                     <img
                       src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover gpu-accelerated"
                     />
                   </div>
                   <div>
@@ -96,7 +96,7 @@ export default function ReviewsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-smooth gpu-accelerated ${
                     index === currentIndex ? "w-8 bg-accent" : "w-2 bg-border hover:bg-muted-foreground"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}

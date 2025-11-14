@@ -19,13 +19,13 @@ export default function Footer() {
             </p>
             {/* Social Links */}
             <div className="flex gap-4 pt-4">
-              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-colors">
+              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-smooth gpu-accelerated">
                 <Linkedin className="w-5 h-5 text-accent" />
               </button>
-              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-colors">
+              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-smooth gpu-accelerated">
                 <Twitter className="w-5 h-5 text-accent" />
               </button>
-              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-colors">
+              <button className="w-10 h-10 rounded-full bg-background hover:bg-accent/20 flex items-center justify-center transition-smooth gpu-accelerated">
                 <Facebook className="w-5 h-5 text-accent" />
               </button>
             </div>
@@ -42,7 +42,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                    className="text-muted-foreground hover:text-accent transition-smooth gpu-accelerated text-sm"
                   >
                     {link.name}
                   </Link>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-accent transition-colors text-sm"
+                    className="text-muted-foreground hover:text-accent transition-smooth gpu-accelerated text-sm"
                   >
                     {link.name}
                   </Link>
@@ -79,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="mailto:info@docdent.com" className="text-muted-foreground hover:text-accent transition-colors text-sm">
+                <a href="mailto:info@docdent.com" className="text-muted-foreground hover:text-accent transition-smooth gpu-accelerated text-sm">
                   info@docdent.com
                 </a>
               </li>
@@ -112,10 +112,10 @@ export default function Footer() {
             © {currentYear} HealthTech. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-muted-foreground hover:text-accent text-sm transition-colors">
+            <Link href="/privacy" className="text-muted-foreground hover:text-accent text-sm transition-smooth gpu-accelerated">
               Privacy Policy
             </Link>
-            <Link href="/termsAndConditions" className="text-muted-foreground hover:text-accent text-sm transition-colors">
+            <Link href="/termsAndConditions" className="text-muted-foreground hover:text-accent text-sm transition-smooth gpu-accelerated">
               Terms of Service
             </Link>
           

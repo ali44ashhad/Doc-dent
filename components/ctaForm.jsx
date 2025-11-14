@@ -7,7 +7,7 @@ export default function ContactAndFollowSection() {
     <section className="bg-background py-20 sm:py-32 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20 animate-fade-in-up">
+        <div className="text-center mb-16 sm:mb-20 animate-fade-in-up gpu-accelerated">
           <p className="text-xs sm:text-sm tracking-widest uppercase text-muted-foreground mb-3 sm:mb-4">
             Get In Touch
           </p>
@@ -21,7 +21,7 @@ export default function ContactAndFollowSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: Contact Info & Social */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <div className="animate-fade-in-up gpu-accelerated" style={{ animationDelay: '0.1s' }}>
             {/* Heading and Description */}
             <div className="mb-12">
               <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -42,7 +42,7 @@ export default function ContactAndFollowSection() {
 
     <a
       href="mailto:info@docdent.com"
-      className="text-foreground font-medium hover:text-accent transition-colors duration-300"
+      className="text-foreground font-medium hover:text-accent transition-smooth gpu-accelerated"
     >
       info@docdent.com
     </a>
@@ -71,19 +71,19 @@ export default function ContactAndFollowSection() {
           </div>
 
           {/* Right: Contact Form */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="animate-fade-in-up gpu-accelerated" style={{ animationDelay: '0.2s' }}>
             <form className="space-y-6">
               {/* Name & Email Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
                   placeholder="Your name"
-                  className="px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-all duration-300 text-foreground placeholder-muted-foreground text-sm"
+                  className="px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-smooth text-foreground placeholder-muted-foreground text-sm gpu-accelerated"
                 />
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-all duration-300 text-foreground placeholder-muted-foreground text-sm"
+                  className="px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-smooth text-foreground placeholder-muted-foreground text-sm gpu-accelerated"
                 />
               </div>
 
@@ -91,20 +91,20 @@ export default function ContactAndFollowSection() {
               <input
                 type="text"
                 placeholder="Subject"
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-all duration-300 text-foreground placeholder-muted-foreground text-sm"
+                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-smooth text-foreground placeholder-muted-foreground text-sm gpu-accelerated"
               />
 
               {/* Message */}
               <textarea
                 rows={6}
                 placeholder="Your message"
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-all duration-300 text-foreground placeholder-muted-foreground text-sm resize-none"
+                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:border-accent focus:ring-1 focus:ring-accent focus:outline-none transition-smooth text-foreground placeholder-muted-foreground text-sm resize-none gpu-accelerated"
               />
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 text-sm shadow-md hover:shadow-lg hover:shadow-accent/20"
+                className="w-full px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:opacity-90 transition-smooth gpu-accelerated hover:scale-105 text-sm shadow-md hover:shadow-lg hover:shadow-accent/20"
               >
                 Send Message
               </button>

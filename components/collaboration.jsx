@@ -53,16 +53,16 @@ export default function CollaborationSection() {
                     {trainingSteps.map((step, index) => (
                         <div
                             key={index}
-                            className="group animate-fade-in-up"
+                            className="group animate-fade-in-up gpu-accelerated"
                             style={{ animationDelay: `${index * 0.1}s` }}
                         >
-                            <div className="relative bg-gray-950 border border-gray-700 sm:border-gray-800 rounded-xl p-6 sm:p-7 h-full hover:border-gray-600 active:border-gray-600 hover:shadow-lg hover:shadow-gray-900/50 active:shadow-lg active:shadow-gray-900/50 transition-all duration-300 cursor-pointer touch-manipulation">
+                            <div className="relative bg-gray-950 border border-gray-700 sm:border-gray-800 rounded-xl p-6 sm:p-7 h-full hover:border-gray-600 active:border-gray-600 hover:shadow-lg hover:shadow-gray-900/50 active:shadow-lg active:shadow-gray-900/50 transition-smooth cursor-pointer touch-manipulation gpu-accelerated">
                                 <div className="absolute -top-4 left-6 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold text-sm shadow-md">
                                     {step.number}
                                 </div>
 
                                 <div className="mt-6 space-y-4">
-                                    <div className="text-4xl transform group-hover:scale-105 group-active:scale-105 transition-transform duration-300">
+                                    <div className="text-4xl transform group-hover:scale-105 group-active:scale-105 transition-smooth gpu-accelerated">
                                         {step.icon}
                                     </div>
 
@@ -75,17 +75,17 @@ export default function CollaborationSection() {
                                     </p>
                                 </div>
 
-                                <div className="absolute bottom-0 left-0 h-px w-0 bg-gray-700 group-hover:w-full group-active:w-full transition-all duration-300" />
+                                <div className="absolute bottom-0 left-0 h-px w-0 bg-gray-700 group-hover:w-full group-active:w-full transition-smooth gpu-accelerated" />
                             </div>
                         </div>
                     ))}
                 </div>
 
-                <div className="text-center mt-14 sm:mt-18 animate-fade-in-up">
+                <div className="text-center mt-14 sm:mt-18 animate-fade-in-up gpu-accelerated">
                     <p className="text-sm sm:text-base text-gray-400 mb-5">
                         Ready to start your healthcare training journey?
                     </p>
-                    <button className="px-8 sm:px-10 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-sm">
+                    <button className="px-8 sm:px-10 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-smooth gpu-accelerated hover:scale-105 shadow-md hover:shadow-lg text-sm">
                         Get Started Today
                     </button>
                 </div>

@@ -44,14 +44,14 @@ export default function AboutSection() {
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           {/* inner content constrained to 95% width on mobile */}
           <div className="w-[95%] mx-auto sm:w-full sm:mx-0">
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center animate-fade-in-up">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center animate-fade-in-up gpu-accelerated">
               {/* Left Image */}
               <div className="flex-1 w-full">
-                <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden">
+                <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden gpu-accelerated">
                   <img
                     src={missionContent.image || "/placeholder.svg"}
                     alt={missionContent.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover gpu-accelerated"
                   />
                 </div>
               </div>
@@ -97,16 +97,16 @@ export default function AboutSection() {
                 key={index}
                 className={`flex flex-col ${
                   index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-6 lg:gap-12 items-center mb-12 last:mb-0 animate-fade-in-up`}
+                } gap-6 lg:gap-12 items-center mb-12 last:mb-0 animate-fade-in-up gpu-accelerated`}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Image */}
                 <div className="flex-1 w-full">
-                  <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden">
+                  <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden gpu-accelerated">
                     <img
                       src={offering.image || "/placeholder.svg"}
                       alt={offering.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover gpu-accelerated"
                     />
                   </div>
                 </div>

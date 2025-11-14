@@ -69,25 +69,25 @@ export default function Teams() {
         {teamMembersData.map((member) => (
           <div
             key={member.id}
-            className="relative bg-white shadow-lg overflow-hidden cursor-pointer group"
+            className="relative bg-white shadow-lg overflow-hidden cursor-pointer group gpu-accelerated"
             onMouseEnter={() => setHoveredId(member.id)}
             onMouseLeave={() => setHoveredId(null)}
           >
             {/* Background Image Block */}
-            <div className="relative w-full h-96 flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-96 flex items-center justify-center overflow-hidden gpu-accelerated">
               <img
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-smooth gpu-accelerated group-hover:scale-110"
               />
               {/* Subtle dark overlay */}
-              <div className="absolute inset-0 bg-black opacity-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+              <div className="absolute inset-0 bg-black opacity-10 transition-smooth gpu-accelerated group-hover:opacity-0"></div>
             </div>
 
             {/* Hover Overlay */}
             <div
-              className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center transition-opacity duration-300 ${
-                hoveredId === member.id ? "opacity-100" : "opacity-0"
+              className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center transition-smooth gpu-accelerated ${
+                hoveredId === member.id ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
               <div className="text-white text-center p-4">

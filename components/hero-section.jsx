@@ -47,9 +47,9 @@ export default function HeroSection() {
   return (
     <>
     
- <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+ <section className="relative min-h-screen flex items-center justify-center overflow-hidden gpu-accelerated">
       {/* IMAGE LAYER */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 gpu-accelerated">
         {heroImages.map((img, index) => {
           const src = typeof img === "string" ? img : img.src;
           const pos = typeof img === "string" ? "center center" : img.pos || "center center";
@@ -59,7 +59,7 @@ export default function HeroSection() {
               src={src}
               alt={`slide-${index}`}
               style={{ objectPosition: pos }}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out gpu-accelerated ${
                 index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             />
@@ -71,7 +71,7 @@ export default function HeroSection() {
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center">
+      <div className="relative z-10 w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center gpu-accelerated">
        <h1
   className="mx-auto max-w-2xl text-white font-extrabold leading-tight break-words"
   style={{ wordBreak: "break-word" }}
@@ -86,12 +86,12 @@ export default function HeroSection() {
 </p>
 
         <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center items-center">
-          <button className="px-6 py-3 bg-accent text-primary-foreground rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transform hover:scale-105 flex items-center gap-2">
+          <button className="px-6 py-3 bg-accent text-primary-foreground rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transition-smooth gpu-accelerated hover:scale-105 flex items-center gap-2">
             Start Free Trial
             <ArrowRight className="w-4 h-4" />
           </button>
 
-          <button className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white/20">
+          <button className="px-6 py-3 bg-white/10 backdrop-blur-md backdrop-blur-optimized border border-white/20 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white/20 transition-smooth gpu-accelerated">
             Watch Demo
           </button>
         </div>
@@ -102,7 +102,7 @@ export default function HeroSection() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-smooth gpu-accelerated ${
                 index === currentSlide ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -116,7 +116,7 @@ export default function HeroSection() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     {/* Header */}
-    <div className="text-center mb-12 sm:mb-16 animate-fade-in-up">
+    <div className="text-center mb-12 sm:mb-16 animate-fade-in-up gpu-accelerated">
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-foreground text-balance">
         Our Collaborations
       </h2>
@@ -131,7 +131,7 @@ export default function HeroSection() {
   {collaborators.map((collaborator, index) => (
     <div
       key={index}
-      className="w-full flex items-center justify-center transition-transform duration-150"
+      className="w-full flex items-center justify-center transition-smooth gpu-accelerated"
       style={{ animationDelay: `${index * 0.05}s` }}
     >
       {collaborator.image ? (
@@ -143,6 +143,7 @@ export default function HeroSection() {
             w-auto max-w-full
             object-contain object-center
             block
+            gpu-accelerated
           "
           style={{ display: "block" }}
         />
