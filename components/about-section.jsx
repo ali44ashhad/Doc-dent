@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function AboutSection() {
   const missionContent = {
     title: "Our Mission",
@@ -7,30 +9,30 @@ export default function AboutSection() {
       "More than 60% of medical students now balance part-time work alongside their studies. DocDent was created to turn this challenge into an opportunity.",
     fullText:
       "Our mission is to bridge the gap between medical education and clinical practice, integrating medical curriculums with real time shifts available.",
-    image: "../aboutimg.jpg",
+    image: "/aboutimg.jpg",
   };
 
   const offerings = [
     {
-      image: "../offertech.jpg",
+      image: "/offertech.jpg",
       title: "Blockchain Technology",
       description:
         "Blockchain is our backbone—helping us make compliance and onboarding simple, secure, and stress-free for all our medical students.",
     },
     {
-      image: "../offerinstrument.jpg",
+      image: "/offerinstrument.jpg",
       title: "Augmented Reality",
       description:
         "Immersive cutting-edge augmented reality training designed to simulate real-life medical scenarios.",
     },
     {
-      image: "../offercolaboration.jpg",
+      image: "/offercolaboration.jpg",
       title: "Collaborations",
       description:
         "Established partnerships with leading medical schools & NHS Trusts across Scotland, to develop bespoke matching algorithms that seamlessly integrate medical curricula with real-time shift opportunities within NHS hospitals.",
     },
     {
-      image: "../offerlearning.jpg",
+      image: "/offerlearning.jpg",
       title: "Machine Learning",
       description:
         "Almost 10% of medical students do not complete their studies, with financial pressures playing a major role. At DocDent, we're committed to changing that. Using machine learning, we aim to identify early signs of burnout and provide timely support—helping students protect their wellbeing, stay on track, and achieve their full potential.",
@@ -48,10 +50,14 @@ export default function AboutSection() {
               {/* Left Image */}
               <div className="flex-1 w-full">
                 <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden gpu-accelerated">
-                  <img
+                  <Image
                     src={missionContent.image || "/placeholder.svg"}
                     alt={missionContent.title}
-                    className="w-full h-full object-cover gpu-accelerated"
+                    fill
+                    quality={85}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover gpu-accelerated"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -103,10 +109,14 @@ export default function AboutSection() {
                 {/* Image */}
                 <div className="flex-1 w-full">
                   <div className="relative h-64 md:h-80 lg:h-96 bg-card border border-border rounded-xl overflow-hidden gpu-accelerated">
-                    <img
+                    <Image
                       src={offering.image || "/placeholder.svg"}
                       alt={offering.title}
-                      className="w-full h-full object-cover gpu-accelerated"
+                      fill
+                      quality={85}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover gpu-accelerated"
+                      loading="lazy"
                     />
                   </div>
                 </div>

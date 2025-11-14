@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 // The team data with six members, and specific placeholder images/backgrounds
 const teamMembersData = [
@@ -7,7 +8,7 @@ const teamMembersData = [
         name: 'Dr Hisham Khan',
         role: 'Founder & CEO',
         imageType: 'M-Lamp',
-        imageUrl: '../hisham.avif', 
+        imageUrl: '/hisham.avif', 
 
     },
     {
@@ -15,19 +16,19 @@ const teamMembersData = [
         name: 'Felix Steckler',
         role: 'Tech Lead',
         imageType: 'Succulent',
-        imageUrl: '../felix.avif', 
+        imageUrl: '/felix.avif', 
     },
     {
         id: 3,
         name: 'Abdullah AlSakiti',
         role: 'England Lead',
-        imageUrl: '../abdullah.avif', 
+        imageUrl: '/abdullah.avif', 
     },
     {
         id: 4,
         name: 'Leena AlWaily',
         role: 'HR Lead',
-        imageUrl: '../leena.avif', 
+        imageUrl: '/leena.avif', 
     },
     {
         id: 5,
@@ -35,13 +36,13 @@ const teamMembersData = [
         role: 'UX Architect',
         imageType: 'Succulent',
         // --- MANUAL IMAGE URL ---
-        imageUrl: '../thomas.avif',
+        imageUrl: '/thomas.avif',
     },
     {
         id: 6,
         name: 'Alex Young',
         role: 'Customer Support Lead',
-        imageUrl: '../alex.avif', 
+        imageUrl: '/alex.avif', 
     },
 ];
 
@@ -75,10 +76,14 @@ export default function Teams() {
           >
             {/* Background Image Block */}
             <div className="relative w-full h-96 flex items-center justify-center overflow-hidden gpu-accelerated">
-              <img
+              <Image
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-full h-full object-cover transition-smooth gpu-accelerated group-hover:scale-110"
+                fill
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-smooth gpu-accelerated group-hover:scale-110"
+                loading="lazy"
               />
               {/* Subtle dark overlay */}
               <div className="absolute inset-0 bg-black opacity-10 transition-smooth gpu-accelerated group-hover:opacity-0"></div>

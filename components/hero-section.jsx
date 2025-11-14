@@ -2,35 +2,36 @@
 
 import { useEffect, useState } from "react"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 const heroImages = [
-  "../health1.jpg",
-  "../health2.jpg",
-  "../health3.jpg",
-  "../health4.jpg",
+  "/health1.jpg",
+  "/health2.jpg",
+  "/health3.jpg",
+  "/health4.jpg",
 ]
 
 
 const collaborators = [
     {
         name: "Collaborator 1",
-        image: "../glasgow.jpg",
+        image: "/glasgow.jpg",
     },
     {
         name: "Collaborator 2",
-        image: "../nhs-gcc.jpg",
+        image: "/nhs-gcc.jpg",
     },
     {
         name: "Collaborator 3",
-        image: "../nhs-lanarkshire.png",
+        image: "/nhs-lanarkshire.png",
     },
     {
         name: "Collaborator 4",
-        image: "../st-andrew.png",
+        image: "/st-andrew.png",
     },
     {
         name: "Collaborator 5",
-        image: "../uni-glasgow.jpg",
+        image: "/uni-glasgow.jpg",
     },
 ]
 
@@ -54,10 +55,14 @@ export default function HeroSection() {
           const src = typeof img === "string" ? img : img.src;
           const pos = typeof img === "string" ? "center center" : img.pos || "center center";
           return (
-            <img
+            <Image
               key={index}
               src={src}
               alt={`slide-${index}`}
+              fill
+              priority={index === 0}
+              quality={90}
+              sizes="100vw"
               style={{ objectPosition: pos }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out gpu-accelerated ${
                 index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -135,9 +140,11 @@ export default function HeroSection() {
       style={{ animationDelay: `${index * 0.05}s` }}
     >
       {collaborator.image ? (
-        <img
+        <Image
           src={collaborator.image}
           alt={collaborator.name}
+          width={200}
+          height={100}
           className="
             max-h-12 sm:max-h-16 md:max-h-20 lg:max-h-28
             w-auto max-w-full
@@ -145,7 +152,8 @@ export default function HeroSection() {
             block
             gpu-accelerated
           "
-          style={{ display: "block" }}
+          style={{ display: "block", height: "auto" }}
+          loading="lazy"
         />
       ) : (
         <div className="text-center">

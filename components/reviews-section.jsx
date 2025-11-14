@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Star } from 'lucide-react'
+import Image from "next/image"
 
 const testimonials = [
   {
@@ -9,21 +10,21 @@ const testimonials = [
     role: "Medical Student",
     content:
       "The training programs offered by DocDent have been invaluable in preparing me for a career in healthcare. I feel confident and well-equipped to tackle real-world medical challenges.",
-    image: "review1.jpg",
+    image: "/review1.jpg",
   },
   {
     name: "Emily White",
     role: "Medical Student",
     content:
       "DocDent's approach to training is exceptional. The augmented reality simulations have significantly enhanced my clinical skills and decision-making abilities.",
-    image: "review2.jpg",
+    image: "/review2.jpg",
   },
   {
     name: "Daniel Brown",
     role: "Medical Student",
     content:
       "I am grateful for the opportunity to work shifts in NHS hospitals through DocDent. It has provided me with a unique learning experience and a deeper understanding of the medical profession.",
-    image: "review3.jpg",
+    image: "/review3.jpg",
   },
 ]
 
@@ -75,11 +76,15 @@ export default function ReviewsSection() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
-                  <div className="w-32 h-32 rounded-full bg-muted overflow-hidden flex-shrink-0 gpu-accelerated">
-                    <img
+                  <div className="relative w-32 h-32 rounded-full bg-muted overflow-hidden flex-shrink-0 gpu-accelerated">
+                    <Image
                       src={testimonial.image || "/placeholder.svg"}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover gpu-accelerated"
+                      fill
+                      quality={85}
+                      sizes="128px"
+                      className="object-cover gpu-accelerated"
+                      loading="lazy"
                     />
                   </div>
                   <div>
