@@ -4,44 +4,44 @@ import React, { useState } from 'react';
 const teamMembersData = [
     {
         id: 1,
-        name: 'Michael Miller',
-        role: 'Lead Designer',
+        name: 'Dr Hisham Khan',
+        role: 'Founder & CEO',
         imageType: 'M-Lamp',
-        imageUrl: 'health1.jpg', 
+        imageUrl: '../hisham.avif', 
 
     },
     {
         id: 2,
-        name: 'Sarah Johnson',
-        role: 'Product Manager',
+        name: 'Felix Steckler',
+        role: 'Tech Lead',
         imageType: 'Succulent',
-        imageUrl: 'health1.jpg', 
+        imageUrl: '../felix.avif', 
     },
     {
         id: 3,
-        name: 'David Lee',
-        role: 'Software Engineer',
-        imageUrl: 'https://images.unsplash.com/photo-1510257529124-b1523491b48b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.0.3&q=80&w=400', 
+        name: 'Abdullah AlSakiti',
+        role: 'England Lead',
+        imageUrl: '../abdullah.avif', 
     },
     {
         id: 4,
-        name: 'Andrea Chen',
-        role: 'Project Lead',
-        imageUrl: 'https://images.unsplash.com/photo-1510257529124-b1523491b48b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.0.3&q=80&w=400', 
+        name: 'Leena AlWaily',
+        role: 'HR Lead',
+        imageUrl: '../leena.avif', 
     },
     {
         id: 5,
-        name: 'Ben Smith',
+        name: `Thomas O'Brien`,
         role: 'UX Architect',
         imageType: 'Succulent',
         // --- MANUAL IMAGE URL ---
-        imageUrl: 'https://images.unsplash.com/photo-1457459146522-6e27c7336146?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.0.3&q=80&w=400',
+        imageUrl: '../thomas.avif',
     },
     {
         id: 6,
-        name: 'Chris Evans',
-        role: 'Data Scientist',
-        imageUrl: 'https://images.unsplash.com/photo-1510257529124-b1523491b48b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.0.3&q=80&w=400', 
+        name: 'Alex Young',
+        role: 'Customer Support Lead',
+        imageUrl: '../alex.avif', 
     },
 ];
 
@@ -53,12 +53,15 @@ export default function Teams() {
        <div className="min-h-screen bg-[#020202] p-8">
       {/* Header */}
       <header className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-light text-white tracking-widest uppercase">
-          Portfolio
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-500 tracking-widest uppercase mt-2">
-          Recent Projects
-        </p>
+       <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight uppercase drop-shadow-lg">
+  Our Portfolio
+</h1>
+
+<p className="text-base sm:text-xl text-gray-400 mt-3 max-w-xl leading-relaxed">
+  Explore our latest work — a collection of innovative, thoughtfully crafted projects that
+  highlight our passion, expertise, and commitment to excellence.
+</p>
+
       </header>
 
       {/* Portfolio Grid */}
@@ -90,9 +93,7 @@ export default function Teams() {
               <div className="text-white text-center p-4">
                 <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
                 <p className="text-lg">{member.role}</p>
-                <p className="mt-4 text-sm opacity-80">
-                  Click for full project details or contact info!
-                </p>
+                
               </div>
             </div>
           </div>

@@ -34,9 +34,11 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
+            <Link href="/contact">
             <button className="px-6 py-2 bg-accent text-primary-foreground rounded-full font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 transform hover:scale-105">
               Get Started
             </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -60,9 +62,11 @@ export default function Navbar() {
             <Link href="/contact" className="block py-2 text-foreground hover:text-accent transition-colors">
               Contact
             </Link>
-            <button className="w-full mt-4 px-6 py-2 bg-accent text-primary-foreground rounded-full font-semibold">
+           <Link href="/contact">
+             <button className="w-full mt-4 px-6 py-2 bg-accent text-primary-foreground rounded-full font-semibold">
               Get Started
             </button>
+           </Link>
           </div>
         )}
       </div>

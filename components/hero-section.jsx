@@ -10,68 +10,94 @@ const heroImages = [
   "../health4.jpg",
 ]
 
+
+const collaborators = [
+    {
+        name: "Collaborator 1",
+        image: "../glasgow.jpg",
+    },
+    {
+        name: "Collaborator 2",
+        image: "../nhs-gcc.jpg",
+    },
+    {
+        name: "Collaborator 3",
+        image: "../nhs-lanarkshire.png",
+    },
+    {
+        name: "Collaborator 4",
+        image: "../st-andrew.png",
+    },
+    {
+        name: "Collaborator 5",
+        image: "../uni-glasgow.jpg",
+    },
+]
+
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 5000)
+    }, 2000)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <>
+    
+ <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* IMAGE LAYER */}
       <div className="absolute inset-0">
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              backgroundImage: `url('${image}')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/40" />
+        {heroImages.map((img, index) => {
+          const src = typeof img === "string" ? img : img.src;
+          const pos = typeof img === "string" ? "center center" : img.pos || "center center";
+          return (
+            <img
+              key={index}
+              src={src}
+              alt={`slide-${index}`}
+              style={{ objectPosition: pos }}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            />
+          );
+        })}
+
+        {/* subtle overlay to keep text readable */}
+        <div className="absolute inset-0 bg-black/30 pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        
+      {/* CONTENT */}
+      <div className="relative z-10 w-full max-w-3xl px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center">
+       <h1
+  className="mx-auto max-w-2xl text-white font-extrabold leading-tight break-words"
+  style={{ wordBreak: "break-word" }}
+>
+  <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Bridge the Gap between</span>
+  <span className="block text-2xl sm:text-3xl md:text-4xl text-accent">Study and Clinical Work</span>
+</h1>
 
-        <h1
-          className="animate-fade-in-up text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-pretty text-white"
-          style={{ animationDelay: "0.1s" }}
-        >
-          Transform Healthcare
-          <span className="block text-accent"> Digitally</span>
-        </h1>
+<p className="mt-6 mx-auto max-w-2xl text-white/85 text-base sm:text-lg md:text-xl leading-relaxed break-words">
+  Seamlessly connect medical students with flexible part-time clinical shifts and learning opportunities
+  to integrate education with real-world healthcare practice.
+</p>
 
-        <p
-          className="animate-fade-in-up text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-8"
-          style={{ animationDelay: "0.2s" }}
-        >
-          Revolutionize patient care with AI-powered diagnostics, seamless telemedicine, and real-time health
-          monitoring. The future of healthcare is here.
-        </p>
-
-        <div
-          className="animate-fade-in-up flex flex-col sm:flex-row gap-4 justify-center"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <button className="px-8 py-4 bg-accent text-primary-foreground rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 group">
+        <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center items-center">
+          <button className="px-6 py-3 bg-accent text-primary-foreground rounded-full font-semibold text-base sm:text-lg hover:shadow-lg transform hover:scale-105 flex items-center gap-2">
             Start Free Trial
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4" />
           </button>
-          <button className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+
+          <button className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white/20">
             Watch Demo
           </button>
         </div>
 
-        <div className="animate-fade-in-up mt-16 flex justify-center gap-2" style={{ animationDelay: "0.4s" }}>
+        {/* DOTS */}
+        <div className="mt-10 flex justify-center gap-2">
           {heroImages.map((_, index) => (
             <button
               key={index}
@@ -85,5 +111,54 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
+
+    <section className="py-16 sm:py-24 bg-background border-t border-b border-border">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {/* Header */}
+    <div className="text-center mb-12 sm:mb-16 animate-fade-in-up">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-foreground text-balance">
+        Our Collaborations
+      </h2>
+      <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+        Trusted by leading companies and organizations worldwide
+      </p>
+    </div>
+
+    {/* Logo Grid */}
+ {/* Logos grid — no background cards, no extra blank space */}
+<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 items-center justify-items-center">
+  {collaborators.map((collaborator, index) => (
+    <div
+      key={index}
+      className="w-full flex items-center justify-center transition-transform duration-150"
+      style={{ animationDelay: `${index * 0.05}s` }}
+    >
+      {collaborator.image ? (
+        <img
+          src={collaborator.image}
+          alt={collaborator.name}
+          className="
+            max-h-12 sm:max-h-16 md:max-h-20 lg:max-h-28
+            w-auto max-w-full
+            object-contain object-center
+            block
+          "
+          style={{ display: "block" }}
+        />
+      ) : (
+        <div className="text-center">
+          <div className="text-3xl text-muted-foreground mb-1">📷</div>
+          <p className="text-xs sm:text-sm text-muted-foreground">Add image</p>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
+  </div>
+</section>
+
+    </>
   )
 }
