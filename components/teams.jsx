@@ -1,109 +1,76 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 
-// The team data with six members, and specific placeholder images/backgrounds
+// Team data (images assumed in public or relative path)
 const teamMembersData = [
-    {
-        id: 1,
-        name: 'Dr Hisham Khan',
-        role: 'Founder & CEO',
-        imageType: 'M-Lamp',
-        imageUrl: '/hisham.avif', 
-
-    },
-    {
-        id: 2,
-        name: 'Felix Steckler',
-        role: 'Tech Lead',
-        imageType: 'Succulent',
-        imageUrl: '/felix.avif', 
-    },
-    {
-        id: 3,
-        name: 'Abdullah AlSakiti',
-        role: 'England Lead',
-        imageUrl: '/abdullah.avif', 
-    },
-    {
-        id: 4,
-        name: 'Leena AlWaily',
-        role: 'HR Lead',
-        imageUrl: '/leena.avif', 
-    },
-    {
-        id: 5,
-        name: `Thomas O'Brien`,
-        role: 'UX Architect',
-        imageType: 'Succulent',
-        // --- MANUAL IMAGE URL ---
-        imageUrl: '/thomas.avif',
-    },
-    {
-        id: 6,
-        name: 'Alex Young',
-        role: 'Customer Support Lead',
-        imageUrl: '/alex.avif', 
-    },
+  { id: 1, name: 'Dr Hisham Khan', role: 'Founder & CEO', imageType: 'M-Lamp', imageUrl: '../hisham.avif' },
+  { id: 2, name: 'Felix Steckler', role: 'Tech Lead', imageType: 'Succulent', imageUrl: '../felix.avif' },
+  { id: 3, name: 'Abdullah AlSakiti', role: 'England Lead', imageUrl: '../abdullah.avif' },
+  { id: 4, name: 'Leena AlWaily', role: 'HR Lead', imageUrl: '../leena.avif' },
+  { id: 5, name: `Thomas O'Brien`, role: 'UX Architect', imageType: 'Succulent', imageUrl: '../thomas.avif' },
+  { id: 6, name: 'Alex Young', role: 'Customer Support Lead', imageUrl: '../alex.avif' },
 ];
 
 export default function Teams() {
-    // State to track which block is hovered.
-    const [hoveredId, setHoveredId] = useState(null);
+  // State to track which block is hovered.
+  const [hoveredId, setHoveredId] = useState(null);
 
-    return (
-       <div className="min-h-screen bg-[#020202] p-8">
+  return (
+    <div className="min-h-screen bg-[#020202] p-8">
       {/* Header */}
       <header className="text-center mb-12">
-       <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight uppercase drop-shadow-lg">
-  Our Portfolio
-</h1>
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight uppercase drop-shadow-lg">
+          Our Team
+        </h1>
 
-<p className="text-base sm:text-xl text-gray-400 mt-3 max-w-xl leading-relaxed">
-  Explore our latest work — a collection of innovative, thoughtfully crafted projects that
-  highlight our passion, expertise, and commitment to excellence.
-</p>
-
+        <p className="text-base sm:text-xl text-gray-400 mt-3 max-w-xl leading-relaxed mx-auto">
+          Meet the people behind our work — talented clinicians, engineers and leaders
+          dedicated to delivering exceptional healthcare training and solutions. Click or hover
+          on any profile to learn more about their role and expertise.
+        </p>
       </header>
 
-      {/* Portfolio Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Team Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {teamMembersData.map((member) => (
-          <div
-            key={member.id}
-            className="relative bg-white shadow-lg overflow-hidden cursor-pointer group gpu-accelerated"
-            onMouseEnter={() => setHoveredId(member.id)}
-            onMouseLeave={() => setHoveredId(null)}
-          >
-            {/* Background Image Block */}
-            <div className="relative w-full h-96 flex items-center justify-center overflow-hidden gpu-accelerated">
-              <Image
-                src={member.imageUrl}
-                alt={member.name}
-                fill
-                quality={85}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-smooth gpu-accelerated group-hover:scale-110"
-                loading="lazy"
-              />
-              {/* Subtle dark overlay */}
-              <div className="absolute inset-0 bg-black opacity-10 transition-smooth gpu-accelerated group-hover:opacity-0"></div>
+          // make the item a column so the name sits below the card and left-aligned
+          <div key={member.id} className="flex flex-col items-start">
+            <div
+              className="relative bg-white shadow-lg overflow-hidden cursor-pointer group w-full"
+              onMouseEnter={() => setHoveredId(member.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
+              {/* Background Image Block */}
+              <div className="relative w-full h-96 flex items-center justify-center overflow-hidden">
+                <img
+                  src={member.imageUrl}
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                {/* Subtle dark overlay */}
+                <div className="absolute inset-0 bg-black opacity-10 transition-opacity duration-300 group-hover:opacity-0"></div>
+              </div>
+
+              {/* Hover Overlay */}
+              <div
+                className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center transition-opacity duration-300 ${
+                  hoveredId === member.id ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <div className="text-white text-center p-4">
+                  <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
+                  <p className="text-lg">{member.role}</p>
+                </div>
+              </div>
             </div>
 
-            {/* Hover Overlay */}
-            <div
-              className={`absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center transition-smooth gpu-accelerated ${
-                hoveredId === member.id ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-            >
-              <div className="text-white text-center p-4">
-                <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                <p className="text-lg">{member.role}</p>
-                
-              </div>
+            {/* Name shown outside / below the card, left-aligned */}
+            <div className="mt-3 ml-1">
+              <p className="text-white font-semibold text-lg">{member.name}</p>
+              <p className="text-sm text-gray-400">{member.role}</p>
             </div>
           </div>
         ))}
       </div>
     </div>
-    );
-};
+  );
+}
