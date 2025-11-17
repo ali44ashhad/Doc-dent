@@ -6,6 +6,7 @@ import ReviewsSection from "@/components/reviews-section"
 import TeamsSection from "@/components/teams"
 import ContactForm from "@/components/ctaForm"
 import Collaboration from "@/components/collaboration"
+import FaqSection from "@/components/faq"
 import Footer from "@/components/footer"
 import Navbar from "@/components/navbar"  
 
@@ -20,6 +21,7 @@ export default function SyntheticV0PageForDeployment() {
     <TeamsSection/>
     <Collaboration/>
     <ContactForm/>
+    <FaqSection/>
     <Footer/>
   </div>
 }

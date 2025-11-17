@@ -1,5 +1,7 @@
 "use client"
 
+import { useInView } from "@/hooks/use-in-view"
+
 const trainingSteps = [
     {
         number: 1,
@@ -32,10 +34,13 @@ const trainingSteps = [
 ]
 
 export default function CollaborationSection() {
+    const { ref: headerRef, isInView: headerInView } = useInView()
+    const { ref: cardsRef, isInView: cardsInView } = useInView()
+
     return (
         <section className="py-20 sm:py-32 bg-black border-t border-gray-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16 sm:mb-20 animate-fade-in-up">
+                <div ref={headerRef} className={`text-center mb-16 sm:mb-20 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <p className="text-xs sm:text-sm tracking-widest uppercase text-gray-400 mb-3 sm:mb-4">
                         Our Training
                     </p>
@@ -47,14 +52,14 @@ export default function CollaborationSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative">
+                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative">
                     <div className="hidden lg:block absolute top-24 left-0 right-0 h-px bg-gray-800" />
 
                     {trainingSteps.map((step, index) => (
                         <div
                             key={index}
-                            className="group animate-fade-in-up gpu-accelerated"
-                            style={{ animationDelay: `${index * 0.1}s` }}
+                            className={`group transition-all duration-700 ${cardsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                            style={{ transitionDelay: `${index * 75}ms` }}
                         >
                             <div className="relative bg-gray-950 border border-gray-700 sm:border-gray-800 rounded-xl p-6 sm:p-7 h-full hover:border-gray-600 active:border-gray-600 hover:shadow-lg hover:shadow-gray-900/50 active:shadow-lg active:shadow-gray-900/50 transition-smooth cursor-pointer touch-manipulation gpu-accelerated">
                                 <div className="absolute -top-4 left-6 w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold text-sm shadow-md">
@@ -81,7 +86,7 @@ export default function CollaborationSection() {
                     ))}
                 </div>
 
-                <div className="text-center mt-14 sm:mt-18 animate-fade-in-up gpu-accelerated">
+                <div className="text-center mt-14 sm:mt-18 transition-all duration-700">
                     <p className="text-sm sm:text-base text-gray-400 mb-5">
                         Ready to start your healthcare training journey?
                     </p>

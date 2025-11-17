@@ -1,13 +1,17 @@
 'use client'
 
-import { Mail, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react'
+import { useInView } from '@/hooks/use-in-view'
 
 export default function ContactAndFollowSection() {
+  const { ref: headerRef, isInView: headerInView } = useInView()
+  const { ref: leftRef, isInView: leftInView } = useInView()
+  const { ref: rightRef, isInView: rightInView } = useInView()
+
   return (
     <section className="bg-background py-20 sm:py-32 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 sm:mb-20 animate-fade-in-up gpu-accelerated">
+        <div ref={headerRef} className={`text-center mb-16 sm:mb-20 transition-all duration-700 ${headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-xs sm:text-sm tracking-widest uppercase text-muted-foreground mb-3 sm:mb-4">
             Get In Touch
           </p>
@@ -21,7 +25,7 @@ export default function ContactAndFollowSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left: Contact Info & Social */}
-          <div className="animate-fade-in-up gpu-accelerated" style={{ animationDelay: '0.1s' }}>
+          <div ref={leftRef} className={`transition-all duration-700 ${leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Heading and Description */}
             <div className="mb-12">
               <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -71,7 +75,7 @@ export default function ContactAndFollowSection() {
           </div>
 
           {/* Right: Contact Form */}
-          <div className="animate-fade-in-up gpu-accelerated" style={{ animationDelay: '0.2s' }}>
+          <div ref={rightRef} className={`transition-all duration-700 ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '0.1s' }}>
             <form className="space-y-6">
               {/* Name & Email Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -115,4 +119,3 @@ export default function ContactAndFollowSection() {
     </section>
   )
 }
-  
